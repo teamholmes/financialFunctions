@@ -40,6 +40,20 @@ describe('Calculator', function() {
       expect(noArguments).to.Throw(testCalculator.errorCode_01);
 
     });
+  });
+
+  describe('VAT Calculator', function () {
+ 
+    it('Should return the amount of VAT to be added to an amount', function () {
+      var testCalculator = new calcEngine();
+       expect(testCalculator.getVATAmount(1000,.20)).to.equal(200);
+    });
+
+     it('Should return the total amount including VAT', function () {
+      var testCalculator = new calcEngine();
+       expect(testCalculator.AmountIncludingVAT(2000,.10)).to.equal(2200);
+    });
 
   });
+
 });
