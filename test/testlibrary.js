@@ -8,16 +8,15 @@ var assert = chai.assert;
 
 describe('Calculator', function() {
 
-        var testCalculator = new calcEngine();
+  var testCalculator = new calcEngine();
 
 	beforeEach(function() {
 	// do nothing
   });
 
   function throwError() {
-    console.log("-----" + testCalculator.errorCode_01);
     throw new Error(testCalculator.errorCode_01);
-}
+  }
 
   describe('Internal Rate of Return', function () {
     it('Should return the correct rate of return for IRR(900,0.1,3)', function () {
@@ -27,17 +26,17 @@ describe('Calculator', function() {
     it('Should throw an error when incorrect number of arguments supplied', function () {
        var oneArgument = function() {
         var testCalculator = new calcEngine();
-        return estCalculator.IRR(900);
+        return testCalculator.IRR(900);
       };
 
-      expect(oneArgument).to.Throw(Error);
+      expect(oneArgument).to.Throw(testCalculator.errorCode_01);
 
         var noArguments = function() {
         var testCalculator = new calcEngine();
-        return estCalculator.IRR();
+        return testCalculator.IRR();
       };
 
-      expect(noArguments).to.Throw(Error);
+      expect(noArguments).to.Throw(testCalculator.errorCode_01);
 
     });
 
