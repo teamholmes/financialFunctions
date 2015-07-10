@@ -1,10 +1,14 @@
 
-var assert = require("assert");
-//var expectChai = require("chai");
+//var assert = require("assert");
+var chai = require("chai");
 var calcEngine = require("../lib/calculatorEngine.js");
+var expect = chai.expect;
+var assert = chai.assert;
 
 
 describe('Calculator', function() {
+
+        var testCalculator = new calcEngine();
 
 	beforeEach(function() {
 	// do nothing
@@ -17,20 +21,24 @@ describe('Calculator', function() {
 
   describe('Internal Rate of Return', function () {
     it('Should return the correct rate of return for IRR(900,0.1,3)', function () {
-      var testCalculator = new calcEngine();
-      assert.equal(676.1833208114198, testCalculator.IRR(900,0.1,3));
+    expect(testCalculator.IRR(900,0.1,3)).to.equal(676.1833208114198);
     });
 
-    it('Should throw error when 1 argument is missing', function () {
-      var testCalculator = new calcEngine();
-      //expect(testCalculator.IRR(900)).to.throw(Error);
-      //chai.expect(throwError).to.throw(new Error(testCalculator.errorCode_01));
-    });
+    it('Should throw an error when incorrect number of arguments supplied', function () {
+       var oneArgument = function() {
+        var testCalculator = new calcEngine();
+        return estCalculator.IRR(900);
+      };
 
-    it('Should throw error when no arguments are entered', function () {
-      var testCalculator = new calcEngine();
-      testCalculator.IRR();
-      assert.throw(throwError, Error, testCalculator.errorCode_01);
+      expect(oneArgument).to.Throw(Error);
+
+        var noArguments = function() {
+        var testCalculator = new calcEngine();
+        return estCalculator.IRR();
+      };
+
+      expect(noArguments).to.Throw(Error);
+
     });
 
   });
